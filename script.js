@@ -35,44 +35,12 @@ document.getElementById("subscription-form").addEventListener("submit", async (e
 });
 
 // Manejadores de autenticación con Google, GitHub y Apple
-
-async function signInWithGithub() {
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: 'github'
-    });
-  
-    if (error) {
-      console.error('Error al iniciar sesión con GitHub:', error);
-      // Manejar el error, por ejemplo, mostrar un mensaje al usuario
-    } else {
-      console.log('Inicio de sesión con GitHub exitoso:', data);
-      // Redirigir al usuario a la página principal o a una página protegida
-    }
-  }
-
-
-
-
-  async function signOut() {
-    const { error } = await supabase.auth.signOut();
-  
-    if (error) {
-      console.error('Error al cerrar sesión:', error);
-      // Manejar el error
-    } else {
-      console.log('Sesión cerrada correctamente');
-      // Redirigir al usuario a la página de inicio de sesión
-    }
-  }
-
-
 document.getElementById("google-auth").addEventListener("click", () => {
   supabase.auth.signInWithOAuth({ provider: "google" }); // Inicia sesión con Google
 });
 
-document.getElementById("github-auth").addEventListener("click", () => {
-  supabase.auth.signInWithOAuth({ provider: "github" }); // Inicia sesión con GitHub
-});
+// Manejador de inicio de sesión con GitHub
+document.getElementById("github-auth").addEventListener("click", signInWithGithub);
 
 document.getElementById("apple-auth").addEventListener("click", () => {
   supabase.auth.signInWithOAuth({ provider: "apple" }); // Inicia sesión con Apple
@@ -163,3 +131,35 @@ dropdownToggles.forEach(toggle => {
     submenu.classList.toggle('show');
   });
 });
+
+// -------------------------------------------------- 
+//  FUNCIONES DE AUTENTICACIÓN
+// -------------------------------------------------- 
+
+// Función para iniciar sesión con GitHub
+async function signInWithGithub() {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'github'
+  });
+
+  if (error) {
+    console.error('Error al iniciar sesión con GitHub:', error);
+    // Manejar el error, por ejemplo, mostrar un mensaje al usuario
+  } else {
+    console.log('Inicio de sesión con GitHub exitoso:', data);
+    // Redirigir al usuario a la página principal o a una página protegida
+  }
+}
+
+// Función para cerrar sesión
+async function signOut() {
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    console.error('Error al cerrar sesión:', error);
+    // Manejar el error
+  } else {
+    console.log('Sesión cerrada correctamente');
+    // Redirigir al usuario a la página de inicio de sesión
+  }
+}
