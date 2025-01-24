@@ -1,0 +1,429 @@
+/* 
+  Este es el archivo CSS para la página web de Ángel Hernández Morales.
+  Contiene estilos para la estructura general, encabezado, secciones y elementos interactivos.
+*/
+
+/* -------------------------------------------------- */
+/*  ESTILOS GENERALES                           */
+/* -------------------------------------------------- */
+
+body {
+    font-family: "San Francisco", Helvetica, Arial, sans-serif; /* Tipografía principal */
+    background-color: #f7f3e8; /* Color de fondo cálido */
+    color: #333; /* Color de texto oscuro */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.container {
+    max-width: 1200px; /* Ancho máximo del contenedor principal */
+    margin: 0 auto; /* Centra el contenedor */
+    padding: 20px; /* Espaciado interno del contenedor */
+}
+
+/* -------------------------------------------------- */
+/*  ENCABEZADO (header)                          */
+/* -------------------------------------------------- */
+
+.fixed-header {
+    background-color: rgba(255, 255, 255, 0.95); /* Fondo semi-transparente */
+    backdrop-filter: blur(10px); /* Efecto blur */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Borde inferior sutil */
+    position: fixed; /* Encabezado fijo en la parte superior */
+    width: 100%; 
+    z-index: 1000; /* Asegura que el encabezado esté encima de otros elementos */
+    top: 0; 
+    padding: 15px 0; 
+    display: flex;
+    align-items: center; /* Alinea verticalmente los elementos del encabezado */
+    justify-content: space-between; /* Distribuye el espacio entre los elementos */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.fixed-header .logo-container {
+    display: flex;
+    align-items: center; /* Alinea el logo y el nombre */
+}
+
+.fixed-header #logo { /* Estilos para el logo */
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px; 
+}
+
+.fixed-header h1 { /* Estilos para el nombre */
+    margin: 0; 
+    font-size: 1.5rem; 
+}
+
+.fixed-header nav { /* Estilos para la navegación */
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.fixed-header nav ul { /* Estilos para la lista de enlaces */
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.fixed-header nav li { /* Estilos para cada elemento de la lista */
+    margin: 0 15px; 
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+}
+
+.fixed-header nav a { /* Estilos para los enlaces */
+    color: #d39e00; 
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px;
+    font-size: 1rem;
+    transition: color 0.3s ease; /* Transición suave al pasar el mouse */
+    display: flex; /* Permite alinear el texto y la flecha */
+    align-items: center; /* Alinea verticalmente el texto y la flecha */
+}
+
+.fixed-header nav a:hover {
+    color: #e6b800;
+}
+
+/* Espaciado para evitar superposición con el contenido */
+body::before {
+    content: "";
+    display: block;
+    height: 268px; 
+}
+
+.dropdown-toggle { /* Estilos para la flecha */
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #d39e00;
+    margin-left: 5px; /* Espacio entre el texto y la flecha */
+}
+
+
+/* -------------------------------------------------- */
+/*  SECCIÓN HERO (hero)                           */
+/* -------------------------------------------------- */
+
+.hero {
+    background-color: #1d1d1f;
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+    width: 100%;
+}
+
+.hero-title { /* Estilos para el título de la sección hero */
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin: 0 0 20px;
+}
+
+.hero-subtitle { /* Estilos para el subtítulo de la sección hero */
+    font-size: 1.5rem;
+    color: #86868b;
+    margin-bottom: 30px;
+}
+
+.hero-buttons .hero-button { /* Estilos para los botones de la sección hero */
+    background-color: #d39e00; 
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    margin: 0 10px;
+    display: inline-block;
+    border: none; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+.hero-buttons .hero-button:hover {
+    background-color: #e6b800;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+/* -------------------------------------------------- */
+/*  BOTONES                                     */
+/* -------------------------------------------------- */
+
+button, .auth-button, .primary-button { /* Estilos generales para botones */
+    background-color: #d39e00;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button:hover, .auth-button:hover, .primary-button:hover {
+    background-color: #e6b800;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* -------------------------------------------------- */
+/*  CAJAS DE TEXTO (input)                         */
+/* -------------------------------------------------- */
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+    border-color: #d39e00;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+/* -------------------------------------------------- */
+/*  SECCIONES GENERALES (section)                   */
+/* -------------------------------------------------- */
+
+section {
+    padding: 60px 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title { /* Estilos para los títulos de las secciones */
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: #333; 
+}
+
+/* -------------------------------------------------- */
+/*  CUADRÍCULA (grid-container)                    */
+/* -------------------------------------------------- */
+
+.grid-container {
+    display: grid;
+    gap: 20px; /* Espacio entre elementos de la cuadrícula */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta las columnas automáticamente */
+    justify-content: center; /* Centra la cuadrícula */
+    align-items: start; 
+}
+
+/* -------------------------------------------------- */
+/*  TARJETAS (service, skill, certification, etc.)  */
+/* -------------------------------------------------- */
+
+.service, .skill, .certification, .htb-machine, .project-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service:hover, .skill:hover, .certification:hover, 
+.htb-machine:hover, .project-card:hover { /* Efecto hover para las tarjetas */
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.service-content, .project-info {
+    text-align: center;
+}
+
+/* -------------------------------------------------- */
+/*  CERTIFICACIONES (certifications)               */
+/* -------------------------------------------------- */
+
+.certifications-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.certifications-grid img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.certification p {
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+/* -------------------------------------------------- */
+/*  HACK THE BOX (htb)                             */
+/* -------------------------------------------------- */
+
+.htb-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.htb-grid img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.htb-machine p {
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+/* -------------------------------------------------- */
+/*  CARRUSEL DE PROYECTOS (carousel)                */
+/* -------------------------------------------------- */
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.project-card {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.project-link {
+    display: inline-block;
+    background-color: #d39e00; 
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    margin-top: auto;
+    border: none; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+.project-link:hover {
+    background-color: #e6b800;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+.prev, .next { /* Estilos para los botones del carrusel */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.2s ease;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* -------------------------------------------------- */
+/*  PIE DE PÁGINA (footer)                         */
+/* -------------------------------------------------- */
+
+footer {
+    background-color: #1d1d1f;
+    color: #86868b;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+}
+
+/* -------------------------------------------------- */
+/*  SUBMENÚS (dropdown, submenu)                   */
+/* -------------------------------------------------- */
+
+.dropdown {
+    position: relative;
+}
+
+.submenu {
+    display: none;
+    position: relative; 
+    background-color: #fff;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    min-width: 180px; 
+    top: 35px; 
+    border: 1px solid #ddd; /* Añade un borde sutil */
+    border-radius: 5px; /* Redondea las esquinas */
+    padding: 10px 0; /* Ajusta el padding */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Añade transiciones */
+    opacity: 0; /* Inicialmente oculto */
+    visibility: hidden;
+}
+
+.dropdown:hover .submenu {
+    display: block;
+    opacity: 1; /* Muestra el submenú */
+    visibility: visible;
+}
+
+.submenu li {
+    padding: 8px 15px; /* Ajusta el padding de los elementos del submenú */
+    border-bottom: 1px solid #eee; /* Añade separadores */
+}
+
+.submenu li:last-child {
+    border-bottom: none; /* Elimina el separador del último elemento */
+}
+
+.submenu a {
+    color: #333; 
+    text-decoration: none;
+    display: block; /* Ocupa todo el ancho del elemento li */
+}
+
+.submenu a:hover {
+    color: #d39e00; 
+}
+
+.submenu.show {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
