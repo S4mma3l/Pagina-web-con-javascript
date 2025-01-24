@@ -125,13 +125,12 @@ const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 // Recorre cada elemento y agrega un evento 'click'
 dropdownToggles.forEach(toggle => {
   toggle.addEventListener('click', () => {
-    // Obtiene el submenú correspondiente al elemento clickeado
-    const submenu = toggle.parentNode.nextElementSibling;
+    // Obtiene el elemento padre (el <li>)
+    const dropdown = toggle.parentNode;
     // Alterna la clase 'show' para mostrar/ocultar el submenú
-    submenu.classList.toggle('show');
+    dropdown.classList.toggle('show');
   });
 });
-
 // -------------------------------------------------- 
 //  FUNCIONES DE AUTENTICACIÓN
 // -------------------------------------------------- 

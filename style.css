@@ -377,53 +377,74 @@ footer {
 /*  SUBMENÚS (dropdown, submenu)                   */
 /* -------------------------------------------------- */
 
-.dropdown {
-    position: relative;
-}
-
-.submenu {
+/* Estilos para el menú principal */
+.dropdown-toggle {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+    position: relative; /* Para posicionar la flecha */
+  }
+  
+  .dropdown-toggle::after {
+    content: '\f078'; /* Flecha hacia abajo (Font Awesome) */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-left: 10px;
+    display: inline-block;
+    transition: transform 0.3s ease; /* Transición suave */
+  }
+  
+  .dropdown.show .dropdown-toggle::after {
+    transform: rotate(180deg); /* Gira la flecha al mostrar el submenú */
+  }
+  
+  /* Estilos para los submenús */
+  .submenu {
     display: none;
-    position: relative; 
+    position: absolute;
+    left: 2;
+    top: 100%;
     background-color: #fff;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    min-width: 180px; 
-    top: 35px; 
-    border: 1px solid #ddd; /* Añade un borde sutil */
-    border-radius: 5px; /* Redondea las esquinas */
-    padding: 10px 0; /* Ajusta el padding */
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* Añade transiciones */
-    opacity: 0; /* Inicialmente oculto */
+    min-width: 180px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    opacity: 0;
     visibility: hidden;
-}
-
-.dropdown:hover .submenu {
+  }
+  
+  .dropdown:hover .submenu,
+  .dropdown.show .submenu {
     display: block;
-    opacity: 1; /* Muestra el submenú */
-    visibility: visible;
-}
-
-.submenu li {
-    padding: 8px 15px; /* Ajusta el padding de los elementos del submenú */
-    border-bottom: 1px solid #eee; /* Añade separadores */
-}
-
-.submenu li:last-child {
-    border-bottom: none; /* Elimina el separador del último elemento */
-}
-
-.submenu a {
-    color: #333; 
-    text-decoration: none;
-    display: block; /* Ocupa todo el ancho del elemento li */
-}
-
-.submenu a:hover {
-    color: #d39e00; 
-}
-
-.submenu.show {
-    display: block;
-    opacity: 1;
+    opacity: 2;
     visibility: visible;
   }
+  
+  .submenu li {
+    padding: 8px 15px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .submenu li:last-child {
+    border-bottom: none;
+  }
+  
+  .submenu a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .submenu a:hover {
+    color: #d39e00;
+  }
+
+  @media (max-width: 768px) { /* Ajusta el ancho del submenú en pantallas menores a 768px */
+    .submenu {
+      min-width: 150px; /* O un valor que se ajuste a tu diseño */
+    }
+  }
+
